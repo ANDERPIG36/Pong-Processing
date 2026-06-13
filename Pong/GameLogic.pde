@@ -22,4 +22,21 @@ void collisions(){
   if(gameState.XB>800){
     gameState.state=3;
   }
+  
+  if(gameState.XB + 10 >= 20 && gameState.XB - 10 <= 60 && gameState.YB + 10 >= gameState.Y1 - 100 && gameState.YB - 10 <= gameState.Y1 + 100) {
+    float hit = (gameState.YB - gameState.Y1) / 100.0;
+    float speed = sqrt(gameState.VXB * gameState.VXB + gameState.VYB * gameState.VYB);
+    float angle = hit * PI / 3;
+    gameState.VXB = cos(angle) * speed;
+    gameState.VYB = sin(angle) * speed;
+    gameState.XB = 70;
+  }
+  if(gameState.XB + 10 >= 740 && gameState.XB - 10 <= 780 && gameState.YB + 10 >= gameState.Y2 - 100 && gameState.YB - 10 <= gameState.Y2 + 100){
+    float hit = (gameState.YB - gameState.Y2) / 100.0;
+    float speed = sqrt(gameState.VXB * gameState.VXB + gameState.VYB * gameState.VYB);
+    float angle = hit * PI / 3;
+    gameState.VXB = -cos(angle) * speed;
+    gameState.VYB = sin(angle) * speed;
+    gameState.XB = 730;
+  }
 }
